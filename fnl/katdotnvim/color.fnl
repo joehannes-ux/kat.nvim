@@ -1,22 +1,22 @@
 (module katdotnvim.color
         {autoload {ucolors katdotnvim.utils.color
-                   main katdotnvim.main
-                   }})
+                   main katdotnvim.main}})
+
 
 ; this file contains all the pre-defined colors
 
 ; define colors
 (defn defineNormalColors []
   (def output
-    {:red :#eb4949
+    {:red :#ff3737
      :green :#2ce0aa
-     :orange :#f2b15c
-     :pink :#f29cb1
-     :purple :#7a53a8
-     :blue :#2dacd2
-     })
-  output
-  )
+     :orange :#f3f158
+     :pink :#F634B1
+     :purple :#9c31c7
+     :blue :#00C4FC})
+
+  output)
+
 
 
 (defn defineBack []
@@ -31,8 +31,8 @@
               3 (ucolors.brighten "#121c2d" 0.3)
               4 (ucolors.brighten "#121c2d" 0.5)
               5 (ucolors.brighten "#121c2d" 0.7)
-              6 (ucolors.brighten "#121c2d" 0.9)
-              }))
+              6 (ucolors.brighten "#121c2d" 0.9)}))
+
       (when (= main.katContrast :hard)
         (set back
              {1 "#121c2d"
@@ -40,9 +40,9 @@
               3 (ucolors.brighten "#121c2d" 0.3)
               4 (ucolors.brighten "#121c2d" 0.5)
               5 (ucolors.brighten "#121c2d" 0.7)
-              6 (ucolors.brighten "#121c2d" 0.9)
-              }))
-      ))
+              6 (ucolors.brighten "#121c2d" 0.9)}))))
+
+
 
   ; else if color is light
   (when (= main.katStyle :light)
@@ -54,8 +54,8 @@
               3 (ucolors.saturation (ucolors.darken "#daf6ff" 0.3) -0.5)
               4 (ucolors.saturation (ucolors.darken "#daf6ff" 0.5) -0.5)
               5 (ucolors.saturation (ucolors.darken "#daf6ff" 0.7) -0.5)
-              6 (ucolors.saturation (ucolors.darken "#daf6ff" 0.9) -0.5)
-              }))
+              6 (ucolors.saturation (ucolors.darken "#daf6ff" 0.9) -0.5)}))
+
       (when (= main.katContrast :hard)
         (set back
              {1 "#daf6ff"
@@ -63,11 +63,11 @@
               3 (ucolors.saturation (ucolors.darken "#daf6ff" 0.3) -0.5)
               4 (ucolors.saturation (ucolors.darken "#daf6ff" 0.5) -0.5)
               5 (ucolors.saturation (ucolors.darken "#daf6ff" 0.7) -0.5)
-              6 (ucolors.saturation (ucolors.darken "#daf6ff" 0.9) -0.5)
-              }))
-      ))
-  back
-  )
+              6 (ucolors.saturation (ucolors.darken "#daf6ff" 0.9) -0.5)}))))
+
+
+  back)
+
 
 (defn defineFore []
   (var fore {})
@@ -80,8 +80,8 @@
               3 (ucolors.saturation (ucolors.darken "#daf6ff" 0.3) -0.5)
               4 (ucolors.saturation (ucolors.darken "#daf6ff" 0.5) -0.5)
               5 (ucolors.saturation (ucolors.darken "#daf6ff" 0.7) -0.5)
-              6 (ucolors.saturation (ucolors.darken "#daf6ff" 0.9) -0.5)
-              }))
+              6 (ucolors.saturation (ucolors.darken "#daf6ff" 0.9) -0.5)}))
+
       (when (= main.katContrast :hard)
         (set fore
              {1 "#daf6ff"
@@ -89,9 +89,9 @@
               3 (ucolors.saturation (ucolors.darken "#daf6ff" 0.3) -0.5)
               4 (ucolors.saturation (ucolors.darken "#daf6ff" 0.5) -0.5)
               5 (ucolors.saturation (ucolors.darken "#daf6ff" 0.7) -0.5)
-              6 (ucolors.saturation (ucolors.darken "#daf6ff" 0.9) -0.5)
-              }))
-      ))
+              6 (ucolors.saturation (ucolors.darken "#daf6ff" 0.9) -0.5)}))))
+
+
 
   (when (= main.katStyle :light)
     (do
@@ -102,8 +102,8 @@
               3 (ucolors.brighten "#121c2d" 0.3)
               4 (ucolors.brighten "#121c2d" 0.5)
               5 (ucolors.brighten "#121c2d" 0.7)
-              6 (ucolors.brighten "#121c2d" 0.9)
-              }))
+              6 (ucolors.brighten "#121c2d" 0.9)}))
+
       (when (= main.katContrast :hard)
         (set fore
              {1 "#121c2d"
@@ -111,11 +111,11 @@
               3 (ucolors.brighten "#121c2d" 0.3)
               4 (ucolors.brighten "#121c2d" 0.5)
               5 (ucolors.brighten "#121c2d" 0.7)
-              6 (ucolors.brighten "#121c2d" 0.9)
-              }))
-      ))
-  fore
-  )
+              6 (ucolors.brighten "#121c2d" 0.9)}))))
+
+
+  fore)
+
 
 (defn init [table]
   (match table

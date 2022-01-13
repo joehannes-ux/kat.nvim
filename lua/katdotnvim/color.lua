@@ -10,12 +10,12 @@ do
   _2amodule_2a["aniseed/locals"] = {}
   _2amodule_locals_2a = (_2amodule_2a)["aniseed/locals"]
 end
-local autoload = (require("katdotnvim.aniseed.autoload")).autoload
+local autoload = (require("aniseed.autoload")).autoload
 local main, ucolors = autoload("katdotnvim.main"), autoload("katdotnvim.utils.color")
 do end (_2amodule_locals_2a)["main"] = main
 _2amodule_locals_2a["ucolors"] = ucolors
 local function defineNormalColors()
-  local output = {red = "#eb4949", green = "#2ce0aa", orange = "#f2b15c", pink = "#f29cb1", purple = "#7a53a8", blue = "#2dacd2"}
+  local output = {red = "#ff3737", green = "#2ce0aa", orange = "#f3f158", pink = "#F634B1", purple = "#9c31c7", blue = "#00C4FC"}
   _2amodule_2a["output"] = output
   return output
 end
