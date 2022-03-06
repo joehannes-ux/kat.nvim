@@ -72,11 +72,13 @@
   (var fore {})
   (when (= vim.o.background :dark)
     (do (when (= main.katContrast :soft)
-          (set fore {1 (ucolors.saturation (ucolors.darken darkForeBack 0.1) -0.5)
+          (set fore {1 (ucolors.saturation (ucolors.lighten darkForeBack 0.1) -0.5)
                      2 darkForeBack
+                     3 (ucolors.saturation (ucolors.darken darkForeBack 0.1) -0.5)
                      3 (ucolors.saturation (ucolors.darken darkForeBack 0.3) -0.5)
                      4 (ucolors.saturation (ucolors.darken darkForeBack 0.5) -0.5)
-                     5 (ucolors.saturation (ucolors.darken darkForeBack 0.7) -0.5)}))
+                     5 (ucolors.saturation (ucolors.darken darkForeBack 0.7) -0.5)
+                     6 (ucolors.saturation (ucolors.darken darkForeBack 0.9) -0.5)}))
 
       (when (= main.katContrast :hard)
         (set fore {1 darkForeBack
@@ -88,8 +90,8 @@
 
   (when (= vim.o.background :light)
     (do (when (= main.katContrast :soft)
-          (set fore {1 (ucolors.brighten lightForeBack -0.1)
-                     2 lightForeBack
+          (set fore {1 (ucolors.darken lightForeBack 0.1)
+                     2 (ucolors.brighten lightForeBack 0.1)
                      3 (ucolors.brighten lightForeBack 0.3)
                      4 (ucolors.brighten lightForeBack 0.5)
                      5 (ucolors.brighten lightForeBack 0.7)
