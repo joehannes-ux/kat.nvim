@@ -96,7 +96,7 @@
                      6 (ucolors.brighten lightForeBack 0.9)}))
       (when (= main.katContrast :hard)
         (set fore
-             {1 lightforeBack
+             {1 lightForeBack
               2 (ucolors.brighten lightForeBack 0.1)
               3 (ucolors.brighten lightForeBack 0.3)
               4 (ucolors.brighten lightForeBack 0.5)
