@@ -16,7 +16,6 @@ local function errMessage(errType, message)
   local errType0 = tostring(errType)
   local message0 = tostring(message)
   local output = ("kat.nvim E" .. errType0 .. ": " .. message0)
-  do end (_2amodule_locals_2a)["output"] = output
   print("out ", output)
   return vim.api.nvim_err_writeln(output)
 end
@@ -28,7 +27,7 @@ local function setDefaults(check)
     else
     end
     if (vim.fn.exists("kat_nvim_integrations") == 0) then
-      vim.g["kat_nvim_integrations"] = {"treesitter", "lsp", "ts_rainbow", "indent_blankline", "startify", "coc", "cmp"}
+      vim.g["kat_nvim_integrations"] = {"treesitter", "lsp", "ts_rainbow", "indent_blankline", "startify", "coc", "cmp", "fugitive"}
     else
     end
     if (vim.fn.exists("kat_nvim_filetype") == 0) then
@@ -45,7 +44,7 @@ local function setDefaults(check)
     vim.g["kat_nvim_commentStyle"] = "italic"
     vim.g["kat_nvim_stupidFeatures"] = false
     vim.g["kat_nvim_integrations"] = {"vim", "vimwiki", "markdown"}
-    vim.g["kat_nvim_integrations"] = {"treesitter", "lsp", "ts_rainbow", "indent_blankline", "startify", "coc", "cmp"}
+    vim.g["kat_nvim_integrations"] = {"treesitter", "lsp", "ts_rainbow", "indent_blankline", "startify", "coc", "cmp", "fugitive"}
     return nil
   end
 end

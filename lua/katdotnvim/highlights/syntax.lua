@@ -17,7 +17,8 @@ _2amodule_locals_2a["groups"] = groups
 _2amodule_locals_2a["main"] = main
 _2amodule_locals_2a["ucolors"] = ucolors
 local function identifier()
-  return (colors.init("background"))[6]
+  local output = ucolors.blendColors((colors.init("normalColors")).blue, (colors.init("background"))[6], 0.65)
+  return output
 end
 _2amodule_2a["identifier"] = identifier
 local function statement()
@@ -34,7 +35,6 @@ end
 _2amodule_2a["typeDef"] = typeDef
 local function special()
   local output = ucolors.blendColors((colors.init("normalColors")).pink, (colors.init("normalColors")).purple, 0.65)
-  do end (_2amodule_2a)["output"] = output
   return output
 end
 _2amodule_2a["special"] = special
@@ -48,7 +48,7 @@ local function init()
   ucolors.highlight("Boolean", ucolors.blendColors(groups.selectionBG(), groups.mainFG(), 0.7), "SKIP", "bold")
   ucolors.highlight("Identifier", identifier(), "SKIP")
   ucolors.highlight("Function", ucolors.saturation(ucolors.brighten(ucolors.blendColors(identifier(), (colors.init("normalColors")).red, 0.3), 0.1), 0.5), "SKIP", "bold")
-  if (main.katStyle == "light") then
+  if (vim.o.background == "light") then
     ucolors.highlight("Variable", ucolors.darken(ucolors.blendColors(identifier(), (colors.init("foreground"))[6], 0.5), 0.4), "SKIP")
   else
     ucolors.highlight("Variable", ucolors.brighten(ucolors.blendColors(identifier(), (colors.init("foreground"))[6], 0.5), 0.4), "SKIP")
@@ -58,7 +58,7 @@ local function init()
   ucolors.highlight("Repeat", ucolors.saturation(ucolors.brighten(ucolors.blendColors(statement(), (colors.init("normalColors")).orange, 0.2), 0.3), 0.8), "SKIP")
   ucolors.highlight("Label", ucolors.saturation(ucolors.blendColors(statement(), (colors.init("normalColors")).pink, 0.2), 1), "SKIP", "bold")
   ucolors.highlight("Operator", ucolors.blendColors(statement(), groups.meldFG(), 0.2), "SKIP", "bold")
-  if (main.katStyle == "light") then
+  if (vim.o.background == "light") then
     ucolors.highlight("Keyword", ucolors.darken(ucolors.blendColors(statement(), (colors.init("normalColors")).green, 0.2), 0.5), "SKIP", "italic")
   else
     ucolors.highlight("Keyword", ucolors.brighten(ucolors.blendColors(statement(), (colors.init("normalColors")).green, 0.2), 0.5), "SKIP", "italic")
@@ -86,6 +86,9 @@ local function init()
   ucolors.highlight("DiffDelete", groups.mainFG(), ucolors.darken((colors.init("normalColors")).red, 0.2), "bold")
   ucolors.highlight("DiffAdd", "SKIP", (colors.init("normalColors")).green, "bold")
   ucolors.highlight("DiffChange", "SKIP", (colors.init("normalColors")).purple, "bold")
-  return ucolors.highlight("DiffText", "SKIP", (colors.init("normalColors")).blue, "bold")
+  ucolors.highlight("DiffText", "SKIP", (colors.init("normalColors")).blue, "bold")
+  ucolors.highlight("diffAdded", ucolors.blendColors((colors.init("normalColors")).green, groups.mainFG(), 0.4), ucolors.blendColors((colors.init("normalColors")).green, groups.mainBG(), 0.6), "bold")
+  ucolors.highlight("diffChanged", ucolors.blendColors((colors.init("normalColors")).blue, groups.mainFG(), 0.4), ucolors.blendColors((colors.init("normalColors")).blue, groups.mainBG(), 0.6), "bold")
+  return ucolors.highlight("diffRemoved", ucolors.blendColors((colors.init("normalColors")).red, groups.mainFG(), 0.4), ucolors.blendColors((colors.init("normalColors")).red, groups.mainBG(), 0.6), "bold")
 end
 _2amodule_2a["init"] = init

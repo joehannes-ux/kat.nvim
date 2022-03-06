@@ -16,7 +16,7 @@ _2amodule_locals_2a["colors"] = colors
 _2amodule_locals_2a["errors"] = errors
 _2amodule_locals_2a["ucolors"] = ucolors
 _2amodule_locals_2a["_"] = _
-local function init(style, contrast)
+local function init(contrast)
   errors.setDefaults(true)
   if vim.g.colors_name then
     vim.cmd("highlight clear")
@@ -27,25 +27,12 @@ local function init(style, contrast)
   else
   end
   vim.api.nvim_set_option("termguicolors", true)
-  local katStyle = style
-  _2amodule_2a["katStyle"] = katStyle
   local katContrast = contrast
   _2amodule_2a["katContrast"] = katContrast
-  if (katStyle == "dark") then
-    if (katContrast == "hard") then
-      vim.g["colors_name"] = "kat.nvim"
-    else
-      vim.g["colors_name"] = "kat.nwim"
-    end
-    vim.api.nvim_set_option("background", "dark")
-  elseif (katStyle == "light") then
-    if (katContrast == "hard") then
-      vim.g["colors_name"] = "kat.lightenvim"
-    else
-      vim.g["colors_name"] = "kat.lightenwim"
-    end
-    vim.api.nvim_set_option("background", "light")
+  if (katContrast == "hard") then
+    vim.g["colors_name"] = "kat.nvim"
   else
+    vim.g["colors_name"] = "kat.nwim"
   end
   do end (require("katdotnvim.highlights.main")).init()
   do end (require("katdotnvim.highlights.syntax")).init()
@@ -56,12 +43,10 @@ local function init(style, contrast)
   end
   for _0, v in ipairs(vim.g.kat_nvim_integrations) do
     local output = ("katdotnvim.highlights.integrations." .. v)
-    do end (_2amodule_2a)["output"] = output
     require(output).init()
   end
   for _0, v in ipairs(vim.g.kat_nvim_filetype) do
     local output = ("katdotnvim.highlights.filetype." .. v)
-    do end (_2amodule_2a)["output"] = output
     require(output).init()
   end
   return nil

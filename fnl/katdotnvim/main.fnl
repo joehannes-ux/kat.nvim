@@ -1,13 +1,11 @@
 (module katdotnvim.main
         {autoload {colors katdotnvim.color
                    ucolors katdotnvim.utils.color
-                   errors katdotnvim.utils.errors
-                   }
-         require-macros [katdotnvim.utils.macros]
-         })
+                   errors katdotnvim.utils.errors}
+         require-macros [katdotnvim.utils.macros]})
 
 
-(defn init [style contrast]
+(defn init [contrast]
   ; define some defaults
   (errors.setDefaults true)
 
@@ -18,24 +16,13 @@
 
   (set- termguicolors true)
 
-  (def katStyle style)
   (def katContrast contrast)
 
-  ; set background and g:colors_name
-  (if (= katStyle :dark)
-      (do
-        (if (= katContrast :hard)
-            (let- :g :colors_name "kat.nvim")
-            (let- :g :colors_name "kat.nwim"))
-        (set- background :dark))
-      (= katStyle :light)
-      (do
-        (if (= katContrast :hard)
-            (let- :g :colors_name "kat.lightenvim")
-            (let- :g :colors_name "kat.lightenwim"))
-        (set- background :light)))
+  ; set g:colors_name for hard and soft themes
+  (if (= katContrast :hard)
+    (let- :g :colors_name "kat.nvim")
+    (let- :g :colors_name "kat.nwim"))
 
-  ; (. (require :katdotnvim.color))
   ((. (require :katdotnvim.highlights.main) :init))
   ((. (require :katdotnvim.highlights.syntax) :init))
   ((. (require :katdotnvim.highlights.terminal) :init))
@@ -44,9 +31,8 @@
 
   ; add integrations
   (each [_ v (ipairs vim.g.kat_nvim_integrations)]
-    (def output (.. "katdotnvim.highlights.integrations." v))
+    (local output (.. "katdotnvim.highlights.integrations." v))
     ((. (require output) :init)))
   (each [_ v (ipairs vim.g.kat_nvim_filetype)]
-    (def output (.. "katdotnvim.highlights.filetype." v))
-    ((. (require output) :init)))
-  )
+    (local output (.. "katdotnvim.highlights.filetype." v))
+    ((. (require output) :init))))

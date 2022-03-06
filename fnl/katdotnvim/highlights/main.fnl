@@ -8,12 +8,10 @@
 ; define variables to use for generic uses
 (defn mainFG [] 
   (var output "")
-  (if (and (= main.katStyle :dark)
-             (= main.katContrast :soft))
-    (do
-      (set output (ucolors.brighten (. (colors.init :foreground) 1) 0.8)))
-    (do
-      (set output (. (colors.init :foreground) 1))))
+  (if (and (= vim.o.background :dark)
+           (= main.katContrast :soft))
+      (do (set output (ucolors.brighten (. (colors.init :foreground) 1) 0.8)))
+      (do (set output (. (colors.init :foreground) 1))))
   output)
 (defn mainBG [] (. (colors.init :background) 1))
 
@@ -61,11 +59,9 @@
   output)
 (defn groupFunction []
   (var output "")
-  (if (= main.katStyle :light)
-    (do
-      (set output (ucolors.saturation (ucolors.darken (. (colors.init :normalColors) :green) 0.5) 0.4)))
-    (do
-      (set output (ucolors.saturation (ucolors.brighten (. (colors.init :normalColors) :green) 0.5) -0.2))))
+  (if (= vim.o.background :light)
+      (do (set output (ucolors.saturation (ucolors.darken (. (colors.init :normalColors) :green) 0.5) 0.4)))
+      (do (set output (ucolors.saturation (ucolors.brighten (. (colors.init :normalColors) :green) 0.5) -0.2))))
   output)
 (defn auxBG []
   (def output (groupFunction))
@@ -103,18 +99,17 @@
   ; Tabline
   ; we need to make the dark soft font brighter to match dark hard tabline
   ; looks bad otherwise imo
-  (if (and (= main.katStyle :dark)
+  (if (and (= vim.o.background :dark)
            (= main.katContrast :soft))
-    (do
-      (var color (ucolors.brighten (highlightFG) 0.8))
-      (ucolors.highlight :TabLine color (highlightBG) :NONE)
-      (ucolors.highlight :TabLineFill (fillBG) (fillBG))
-      (ucolors.highlight :TabLineSel color (selectionBG) :bold)
-      )
-    (do
-      (ucolors.highlight :TabLine (highlightFG) (highlightBG) :NONE)
-      (ucolors.highlight :TabLineFill (fillBG) (fillBG))
-      (ucolors.highlight :TabLineSel (selectionFG) (selectionBG) :bold)))
+      (do
+        (var color (ucolors.brighten (highlightFG) 0.8))
+        (ucolors.highlight :TabLine color (highlightBG) :NONE)
+        (ucolors.highlight :TabLineFill (fillBG) (fillBG))
+        (ucolors.highlight :TabLineSel color (selectionBG) :bold))
+      (do
+        (ucolors.highlight :TabLine (highlightFG) (highlightBG) :NONE)
+        (ucolors.highlight :TabLineFill (fillBG) (fillBG))
+        (ucolors.highlight :TabLineSel (selectionFG) (selectionBG) :bold)))
 
   (ucolors.highlight :Title (. (colors.init :normalColors) :green) :NONE :bold)
 
@@ -165,8 +160,7 @@
   (ucolors.highlight :debugBreakpoint :SKIP (ucolors.blendColors (errorBG) (mainFG) 0.6))
 
   (if (= (vim.fn.has :gui) 1)
-    (do
-      (ucolors.highlight :Menu (mainFG) (mainBG))
-      (ucolors.highlight :Tooltip (fillFG) (fillBG))
-      (ucolors.highlight :Scrollbar (highlightFG) (highlightBG))))
-  )
+      (do
+        (ucolors.highlight :Menu (mainFG) (mainBG))
+        (ucolors.highlight :Tooltip (fillFG) (fillBG))
+        (ucolors.highlight :Scrollbar (highlightFG) (highlightBG)))))
