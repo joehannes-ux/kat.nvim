@@ -8,8 +8,8 @@
 ; only these need to be changed
 
 ; foreground and background can change, simply set the light and dark you want
-(def- lightForeBack "#121c2d")
-(def- darkForeBack "#daf6ff")
+(def- lightForeBack :#121c2d)
+(def- darkForeBack :#daf6ff)
 
 (def- redPrimary :#eb4949)
 (def- greenPrimary :#2ce0aa)
@@ -76,7 +76,7 @@
                      2 darkForeBack
                      3 (ucolors.saturation (ucolors.darken darkForeBack 0.3) -0.5)
                      4 (ucolors.saturation (ucolors.darken darkForeBack 0.5) -0.5)
-                     5 (ucolors.saturation (ucolors.darken darkForeBack 0.7) -0.5)
+                     5 (ucolors.saturation (ucolors.darken darkForeBack 0.7) -0.5)}))
 
       (when (= main.katContrast :hard)
         (set fore {1 darkForeBack
@@ -96,15 +96,15 @@
                      6 (ucolors.brighten lightForeBack 0.9)}))
       (when (= main.katContrast :hard)
         (set fore
-             {1 "#121c2d"
-              2 (ucolors.brighten "#121c2d" 0.1)
-              3 (ucolors.brighten "#121c2d" 0.3)
-              4 (ucolors.brighten "#121c2d" 0.5)
-              5 (ucolors.brighten "#121c2d" 0.7)
-              6 (ucolors.brighten "#121c2d" 0.9)}))))
+             {1 lightforeBack
+              2 (ucolors.brighten lightForeBack 0.1)
+              3 (ucolors.brighten lightForeBack 0.3)
+              4 (ucolors.brighten lightForeBack 0.5)
+              5 (ucolors.brighten lightForeBack 0.7)
+              6 (ucolors.brighten lightForeBack 0.9)}))))
 
 
-  fore
+  fore)
 
 (defn init [table]
   (match table

@@ -1,5 +1,5 @@
 local _2afile_2a = "fnl/aniseed/env.fnl"
-local _2amodule_name_2a = "katdotnvim.aniseed.env"
+local _2amodule_name_2a = "aniseed.env"
 local _2amodule_2a
 do
   package.loaded[_2amodule_name_2a] = {}
@@ -10,8 +10,8 @@ do
   _2amodule_2a["aniseed/locals"] = {}
   _2amodule_locals_2a = (_2amodule_2a)["aniseed/locals"]
 end
-local autoload = (require("katdotnvim.aniseed.autoload")).autoload
-local compile, fennel, fs, nvim = autoload("katdotnvim.aniseed.compile"), autoload("katdotnvim.aniseed.fennel"), autoload("katdotnvim.aniseed.fs"), autoload("katdotnvim.aniseed.nvim")
+local autoload = (require("aniseed.autoload")).autoload
+local compile, fennel, fs, nvim = autoload("aniseed.compile"), autoload("aniseed.fennel"), autoload("aniseed.fs"), autoload("aniseed.nvim")
 do end (_2amodule_locals_2a)["compile"] = compile
 _2amodule_locals_2a["fennel"] = fennel
 _2amodule_locals_2a["fs"] = fs
@@ -60,3 +60,4 @@ local function init(opts)
   return quiet_require((opts0.module or "init"))
 end
 _2amodule_2a["init"] = init
+return _2amodule_2a

@@ -1,5 +1,5 @@
 local _2afile_2a = "fnl/aniseed/nvim/util.fnl"
-local _2amodule_name_2a = "katdotnvim.aniseed.nvim.util"
+local _2amodule_name_2a = "aniseed.nvim.util"
 local _2amodule_2a
 do
   package.loaded[_2amodule_name_2a] = {}
@@ -10,8 +10,8 @@ do
   _2amodule_2a["aniseed/locals"] = {}
   _2amodule_locals_2a = (_2amodule_2a)["aniseed/locals"]
 end
-local autoload = (require("katdotnvim.aniseed.autoload")).autoload
-local nvim = autoload("katdotnvim.aniseed.nvim")
+local autoload = (require("aniseed.autoload")).autoload
+local nvim = autoload("aniseed.nvim")
 do end (_2amodule_locals_2a)["nvim"] = nvim
 local function normal(keys)
   return nvim.ex.silent(("exe \"normal! " .. keys .. "\""))
@@ -60,3 +60,4 @@ local function with_out_str(f)
   return string.gsub(nvim.g.aniseed_nvim_util_out_str, "^(\n?)(.*)$", "%2%1")
 end
 _2amodule_2a["with-out-str"] = with_out_str
+return _2amodule_2a

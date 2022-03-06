@@ -31,12 +31,7 @@ _2amodule_locals_2a["purplePrimary"] = purplePrimary
 local bluePrimary = "#2dacd2"
 _2amodule_locals_2a["bluePrimary"] = bluePrimary
 local function defineNormalColors()
-<<<<<<< HEAD
-  local output = {red = "#ff3737", green = "#2ce0aa", orange = "#f3f158", pink = "#F634B1", purple = "#9c31c7", blue = "#00C4FC"}
-  _2amodule_2a["output"] = output
-=======
   local output = {red = redPrimary, green = greenPrimary, orange = orangePrimary, pink = pinkPrimary, purple = purplePrimary, blue = bluePrimary}
->>>>>>> 5f2b5e88f999302f14cf78039591cf22670553b6
   return output
 end
 _2amodule_2a["defineNormalColors"] = defineNormalColors
@@ -71,7 +66,7 @@ local function defineFore()
   local fore = {}
   if (vim.o.background == "dark") then
     if (main.katContrast == "soft") then
-      fore = {ucolors.saturation(ucolors.darken(darkForeBack, 0.1), -0.5), darkForeBack, ucolors.saturation(ucolors.darken(darkForeBack, 0.3), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.5), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.7), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.9), -0.5)}
+      fore = {ucolors.saturation(ucolors.darken(darkForeBack, 0.1), -0.5), darkForeBack, ucolors.saturation(ucolors.darken(darkForeBack, 0.3), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.5), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.7), -0.5)}
     else
     end
     if (main.katContrast == "hard") then
@@ -86,7 +81,7 @@ local function defineFore()
     else
     end
     if (main.katContrast == "hard") then
-      fore = {lightForeBack, ucolors.brighten(lightForeBack, 0.1), ucolors.brighten(lightForeBack, 0.3), ucolors.brighten(lightForeBack, 0.5), ucolors.brighten(lightForeBack, 0.7), ucolors.brighten(lightForeBack, 0.9)}
+      fore = {lightforeBack, ucolors.brighten(lightForeBack, 0.1), ucolors.brighten(lightForeBack, 0.3), ucolors.brighten(lightForeBack, 0.5), ucolors.brighten(lightForeBack, 0.7), ucolors.brighten(lightForeBack, 0.9)}
     else
     end
   else

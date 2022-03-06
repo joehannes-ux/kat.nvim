@@ -1,5 +1,5 @@
 local _2afile_2a = "fnl/aniseed/test.fnl"
-local _2amodule_name_2a = "katdotnvim.aniseed.test"
+local _2amodule_name_2a = "aniseed.test"
 local _2amodule_2a
 do
   package.loaded[_2amodule_name_2a] = {}
@@ -10,8 +10,8 @@ do
   _2amodule_2a["aniseed/locals"] = {}
   _2amodule_locals_2a = (_2amodule_2a)["aniseed/locals"]
 end
-local autoload = (require("katdotnvim.aniseed.autoload")).autoload
-local a, fs, nvim, str = autoload("katdotnvim.aniseed.core"), autoload("katdotnvim.aniseed.fs"), autoload("katdotnvim.aniseed.nvim"), autoload("katdotnvim.aniseed.string")
+local autoload = (require("aniseed.autoload")).autoload
+local a, fs, nvim, str = autoload("aniseed.core"), autoload("aniseed.fs"), autoload("aniseed.nvim"), autoload("aniseed.string")
 do end (_2amodule_locals_2a)["a"] = a
 _2amodule_locals_2a["fs"] = fs
 _2amodule_locals_2a["nvim"] = nvim
@@ -150,3 +150,4 @@ local function suite()
   end
 end
 _2amodule_2a["suite"] = suite
+return _2amodule_2a

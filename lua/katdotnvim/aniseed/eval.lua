@@ -1,5 +1,5 @@
 local _2afile_2a = "fnl/aniseed/eval.fnl"
-local _2amodule_name_2a = "katdotnvim.aniseed.eval"
+local _2amodule_name_2a = "aniseed.eval"
 local _2amodule_2a
 do
   package.loaded[_2amodule_name_2a] = {}
@@ -10,8 +10,8 @@ do
   _2amodule_2a["aniseed/locals"] = {}
   _2amodule_locals_2a = (_2amodule_2a)["aniseed/locals"]
 end
-local autoload = (require("katdotnvim.aniseed.autoload")).autoload
-local a, compile, fennel, fs, nvim = autoload("katdotnvim.aniseed.core"), autoload("katdotnvim.aniseed.compile"), autoload("katdotnvim.aniseed.fennel"), autoload("katdotnvim.aniseed.fs"), autoload("katdotnvim.aniseed.nvim")
+local autoload = (require("aniseed.autoload")).autoload
+local a, compile, fennel, fs, nvim = autoload("aniseed.core"), autoload("aniseed.compile"), autoload("aniseed.fennel"), autoload("aniseed.fs"), autoload("aniseed.nvim")
 do end (_2amodule_locals_2a)["a"] = a
 _2amodule_locals_2a["compile"] = compile
 _2amodule_locals_2a["fennel"] = fennel
@@ -20,7 +20,7 @@ _2amodule_locals_2a["nvim"] = nvim
 local function str(code, opts)
   local fnl = fennel.impl()
   local function _1_()
-    return fnl.eval(compile["macros-prefix"](code, opts), a.merge({compilerEnv = _G}, opts))
+    return fnl.eval(compile["wrap-macros"](code, opts), a.merge({compilerEnv = _G}, opts))
   end
   return xpcall(_1_, fnl.traceback)
 end
@@ -57,7 +57,7 @@ local function repl(opts)
   end
   co = coroutine.create(_4_)
   coroutine.resume(co)
-  coroutine.resume(co, compile["macros-prefix"](nil, opts0))
+  coroutine.resume(co, compile["wrap-macros"](nil, opts0))
   eval_values = nil
   local function _7_(code)
     ANISEED_STATIC_MODULES = false
@@ -69,3 +69,4 @@ local function repl(opts)
   return _7_
 end
 _2amodule_2a["repl"] = repl
+return _2amodule_2a

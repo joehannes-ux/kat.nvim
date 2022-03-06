@@ -1,9 +1,9 @@
-package.preload["katdotnvim.aniseed.fennel.repl"] = package.preload["katdotnvim.aniseed.fennel.repl"] or function(...)
-  local utils = require("katdotnvim.aniseed.fennel.utils")
-  local parser = require("katdotnvim.aniseed.fennel.parser")
-  local compiler = require("katdotnvim.aniseed.fennel.compiler")
-  local specials = require("katdotnvim.aniseed.fennel.specials")
-  local view = require("katdotnvim.aniseed.fennel.view")
+package.preload["aniseed.fennel.repl"] = package.preload["aniseed.fennel.repl"] or function(...)
+  local utils = require("aniseed.fennel.utils")
+  local parser = require("aniseed.fennel.parser")
+  local compiler = require("aniseed.fennel.compiler")
+  local specials = require("aniseed.fennel.specials")
+  local view = require("aniseed.fennel.view")
   local unpack = (table.unpack or _G.unpack)
   local function default_read_chunk(parser_state)
     local function _519_()
@@ -363,10 +363,10 @@ package.preload["katdotnvim.aniseed.fennel.repl"] = package.preload["katdotnvim.
           _571_ = _572_
         end
       end
-      if ((_G.type(_571_) == "table") and (nil ~= (_571_).short_src) and (nil ~= (_571_).linedefined) and ((_571_).what == "Lua") and (nil ~= (_571_).source)) then
-        local src = (_571_).short_src
+      if ((_G.type(_571_) == "table") and ((_571_).what == "Lua") and (nil ~= (_571_).linedefined) and (nil ~= (_571_).source) and (nil ~= (_571_).short_src)) then
         local line = (_571_).linedefined
         local source = (_571_).source
+        local src = (_571_).short_src
         local fnlsrc
         do
           local t_576_ = compiler.sourcemap
@@ -567,11 +567,11 @@ package.preload["katdotnvim.aniseed.fennel.repl"] = package.preload["katdotnvim.
   end
   return repl
 end
-package.preload["katdotnvim.aniseed.fennel.specials"] = package.preload["katdotnvim.aniseed.fennel.specials"] or function(...)
-  local utils = require("katdotnvim.aniseed.fennel.utils")
-  local view = require("katdotnvim.aniseed.fennel.view")
-  local parser = require("katdotnvim.aniseed.fennel.parser")
-  local compiler = require("katdotnvim.aniseed.fennel.compiler")
+package.preload["aniseed.fennel.specials"] = package.preload["aniseed.fennel.specials"] or function(...)
+  local utils = require("aniseed.fennel.utils")
+  local view = require("aniseed.fennel.view")
+  local parser = require("aniseed.fennel.parser")
+  local compiler = require("aniseed.fennel.compiler")
   local unpack = (table.unpack or _G.unpack)
   local SPECIALS = compiler.scopes.global.specials
   local function wrap_env(env)
@@ -1765,7 +1765,7 @@ package.preload["katdotnvim.aniseed.fennel.specials"] = package.preload["katdotn
     end
   end
   local function metadata_only_fennel(modname)
-    if ((modname == "katdotnvim.aniseed.fennel.macros") or (package and package.loaded and ("table" == type(package.loaded[modname])) and (package.loaded[modname].metadata == compiler.metadata))) then
+    if ((modname == "aniseed.fennel.macros") or (package and package.loaded and ("table" == type(package.loaded[modname])) and (package.loaded[modname].metadata == compiler.metadata))) then
       return {metadata = compiler.metadata}
     else
       return nil
@@ -1957,10 +1957,10 @@ package.preload["katdotnvim.aniseed.fennel.specials"] = package.preload["katdotn
   doc_special("eval-compiler", {"..."}, "Evaluate the body at compile-time. Use the macro system instead if possible.", true)
   return {doc = doc_2a, ["current-global-names"] = current_global_names, ["load-code"] = load_code, ["macro-loaded"] = macro_loaded, ["macro-searchers"] = macro_searchers, ["make-compiler-env"] = make_compiler_env, ["search-module"] = search_module, ["make-searcher"] = make_searcher, ["wrap-env"] = wrap_env}
 end
-package.preload["katdotnvim.aniseed.fennel.compiler"] = package.preload["katdotnvim.aniseed.fennel.compiler"] or function(...)
-  local utils = require("katdotnvim.aniseed.fennel.utils")
-  local parser = require("katdotnvim.aniseed.fennel.parser")
-  local friend = require("katdotnvim.aniseed.fennel.friend")
+package.preload["aniseed.fennel.compiler"] = package.preload["aniseed.fennel.compiler"] or function(...)
+  local utils = require("aniseed.fennel.utils")
+  local parser = require("aniseed.fennel.parser")
+  local friend = require("aniseed.fennel.friend")
   local unpack = (table.unpack or _G.unpack)
   local scopes = {}
   local function make_scope(_3fparent)
@@ -3059,8 +3059,8 @@ package.preload["katdotnvim.aniseed.fennel.compiler"] = package.preload["katdotn
   end
   return {compile = compile, compile1 = compile1, ["compile-stream"] = compile_stream, ["compile-string"] = compile_string, emit = emit, destructure = destructure, ["require-include"] = require_include, autogensym = autogensym, gensym = gensym, ["do-quote"] = do_quote, ["global-mangling"] = global_mangling, ["global-unmangling"] = global_unmangling, ["apply-manglings"] = apply_manglings, macroexpand = macroexpand_2a, ["declare-local"] = declare_local, ["make-scope"] = make_scope, ["keep-side-effects"] = keep_side_effects, ["symbol-to-expression"] = symbol_to_expression, assert = assert_compile, scopes = scopes, traceback = traceback, metadata = make_metadata(), sourcemap = sourcemap}
 end
-package.preload["katdotnvim.aniseed.fennel.friend"] = package.preload["katdotnvim.aniseed.fennel.friend"] or function(...)
-  local utils = require("katdotnvim.aniseed.fennel.utils")
+package.preload["aniseed.fennel.friend"] = package.preload["aniseed.fennel.friend"] or function(...)
+  local utils = require("aniseed.fennel.utils")
   local suggestions = {["unexpected multi symbol (.*)"] = {"removing periods or colons from %s"}, ["use of global (.*) is aliased by a local"] = {"renaming local %s", "refer to the global using _G.%s instead of directly"}, ["local (.*) was overshadowed by a special form or macro"] = {"renaming local %s"}, ["global (.*) conflicts with local"] = {"renaming local %s"}, ["expected var (.*)"] = {"declaring %s using var instead of let/local", "introducing a new local instead of changing the value of %s"}, ["expected macros to be table"] = {"ensuring your macro definitions return a table"}, ["expected each macro to be function"] = {"ensuring that the value for each key in your macros table contains a function", "avoid defining nested macro tables"}, ["macro not found in macro module"] = {"checking the keys of the imported macro module's returned table"}, ["macro tried to bind (.*) without gensym"] = {"changing to %s# when introducing identifiers inside macros"}, ["unknown identifier in strict mode: (.*)"] = {"looking to see if there's a typo", "using the _G table instead, eg. _G.%s if you really want a global", "moving this code to somewhere that %s is in scope", "binding %s as a local in the scope of this code"}, ["expected a function.* to call"] = {"removing the empty parentheses", "using square brackets if you want an empty table"}, ["cannot call literal value"] = {"checking for typos", "checking for a missing function name"}, ["unexpected vararg"] = {"putting \"...\" at the end of the fn parameters if the vararg was intended"}, ["multisym method calls may only be in call position"] = {"using a period instead of a colon to reference a table's fields", "putting parens around this"}, ["unused local (.*)"] = {"renaming the local to _%s if it is meant to be unused", "fixing a typo so %s is used", "disabling the linter which checks for unused locals"}, ["expected parameters"] = {"adding function parameters as a list of identifiers in brackets"}, ["unable to bind (.*)"] = {"replacing the %s with an identifier"}, ["expected rest argument before last parameter"] = {"moving & to right before the final identifier when destructuring"}, ["expected vararg as last parameter"] = {"moving the \"...\" to the end of the parameter list"}, ["expected symbol for function parameter: (.*)"] = {"changing %s to an identifier instead of a literal value"}, ["could not compile value of type "] = {"debugging the macro you're calling to return a list or table"}, ["expected local"] = {"looking for a typo", "looking for a local which is used out of its scope"}, ["expected body expression"] = {"putting some code in the body of this form after the bindings"}, ["expected binding and iterator"] = {"making sure you haven't omitted a local name or iterator"}, ["expected binding sequence"] = {"placing a table here in square brackets containing identifiers to bind"}, ["expected even number of name/value bindings"] = {"finding where the identifier or value is missing"}, ["may only be used at compile time"] = {"moving this to inside a macro if you need to manipulate symbols/lists", "using square brackets instead of parens to construct a table"}, ["unexpected closing delimiter (.)"] = {"deleting %s", "adding matching opening delimiter earlier"}, ["mismatched closing delimiter (.), expected (.)"] = {"replacing %s with %s", "deleting %s", "adding matching opening delimiter earlier"}, ["expected even number of values in table literal"] = {"removing a key", "adding a value"}, ["expected whitespace before opening delimiter"] = {"adding whitespace"}, ["illegal character: (.)"] = {"deleting or replacing %s", "avoiding reserved characters like \", \\, ', ~, ;, @, `, and comma"}, ["could not read number (.*)"] = {"removing the non-digit character", "beginning the identifier with a non-digit if it is not meant to be a number"}, ["can't start multisym segment with a digit"] = {"removing the digit", "adding a non-digit before the digit"}, ["malformed multisym"] = {"ensuring each period or colon is not followed by another period or colon"}, ["method must be last component"] = {"using a period instead of a colon for field access", "removing segments after the colon", "making the method call, then looking up the field on the result"}, ["$ and $... in hashfn are mutually exclusive"] = {"modifying the hashfn so it only contains $... or $, $1, $2, $3, etc"}, ["tried to reference a macro at runtime"] = {"renaming the macro so as not to conflict with locals"}, ["expected even number of pattern/body pairs"] = {"checking that every pattern has a body to go with it", "adding _ before the final body"}, ["unexpected arguments"] = {"removing an argument", "checking for typos"}, ["unexpected iterator clause"] = {"removing an argument", "checking for typos"}}
   local unpack = (table.unpack or _G.unpack)
   local function suggest(msg)
@@ -3158,9 +3158,9 @@ package.preload["katdotnvim.aniseed.fennel.friend"] = package.preload["katdotnvi
   end
   return {["assert-compile"] = assert_compile, ["parse-error"] = parse_error}
 end
-package.preload["katdotnvim.aniseed.fennel.parser"] = package.preload["katdotnvim.aniseed.fennel.parser"] or function(...)
-  local utils = require("katdotnvim.aniseed.fennel.utils")
-  local friend = require("katdotnvim.aniseed.fennel.friend")
+package.preload["aniseed.fennel.parser"] = package.preload["aniseed.fennel.parser"] or function(...)
+  local utils = require("aniseed.fennel.utils")
+  local friend = require("aniseed.fennel.friend")
   local unpack = (table.unpack or _G.unpack)
   local function granulate(getchunk)
     local c, index, done_3f = "", 1, false
@@ -3592,7 +3592,7 @@ package.preload["katdotnvim.aniseed.fennel.parser"] = package.preload["katdotnvi
   return {granulate = granulate, parser = parser, ["string-stream"] = string_stream, ["sym-char?"] = sym_char_3f}
 end
 local utils
-package.preload["katdotnvim.aniseed.fennel.view"] = package.preload["katdotnvim.aniseed.fennel.view"] or function(...)
+package.preload["aniseed.fennel.view"] = package.preload["aniseed.fennel.view"] or function(...)
   local type_order = {number = 1, boolean = 2, string = 3, table = 4, ["function"] = 5, userdata = 6, thread = 7}
   local lua_pairs = pairs
   local lua_ipairs = ipairs
@@ -4148,8 +4148,8 @@ package.preload["katdotnvim.aniseed.fennel.view"] = package.preload["katdotnvim.
   end
   return view
 end
-package.preload["katdotnvim.aniseed.fennel.utils"] = package.preload["katdotnvim.aniseed.fennel.utils"] or function(...)
-  local view = require("katdotnvim.aniseed.fennel.view")
+package.preload["aniseed.fennel.utils"] = package.preload["aniseed.fennel.utils"] or function(...)
+  local view = require("aniseed.fennel.view")
   local version = "1.0.0"
   local function warn(message)
     if (_G.io and _G.io.stderr) then
@@ -4505,12 +4505,12 @@ package.preload["katdotnvim.aniseed.fennel.utils"] = package.preload["katdotnvim
   end
   return {warn = warn, allpairs = allpairs, stablepairs = stablepairs, copy = copy, kvmap = kvmap, map = map, ["walk-tree"] = walk_tree, ["member?"] = member_3f, list = list, sequence = sequence, sym = sym, varg = varg, expr = expr, comment = comment_2a, ["comment?"] = comment_3f, ["expr?"] = expr_3f, ["list?"] = list_3f, ["multi-sym?"] = multi_sym_3f, ["sequence?"] = sequence_3f, ["sym?"] = sym_3f, ["table?"] = table_3f, ["varg?"] = varg_3f, ["quoted?"] = quoted_3f, ["valid-lua-identifier?"] = valid_lua_identifier_3f, ["lua-keywords"] = lua_keywords, hook = hook, ["propagate-options"] = propagate_options, root = root, ["debug-on?"] = debug_on_3f, ["ast-source"] = ast_source, version = version, path = table.concat({"./?.fnl", "./?/init.fnl", getenv("FENNEL_PATH")}, ";"), ["macro-path"] = table.concat({"./?.fnl", "./?/init-macros.fnl", "./?/init.fnl", getenv("FENNEL_MACRO_PATH")}, ";")}
 end
-utils = require("katdotnvim.aniseed.fennel.utils")
-local parser = require("katdotnvim.aniseed.fennel.parser")
-local compiler = require("katdotnvim.aniseed.fennel.compiler")
-local specials = require("katdotnvim.aniseed.fennel.specials")
-local repl = require("katdotnvim.aniseed.fennel.repl")
-local view = require("katdotnvim.aniseed.fennel.view")
+utils = require("aniseed.fennel.utils")
+local parser = require("aniseed.fennel.parser")
+local compiler = require("aniseed.fennel.compiler")
+local specials = require("aniseed.fennel.specials")
+local repl = require("aniseed.fennel.repl")
+local view = require("aniseed.fennel.view")
 local function eval_env(env, opts)
   if (env == "_COMPILER") then
     local env0 = specials["make-compiler-env"](nil, compiler.scopes.compiler, {}, opts)
@@ -5149,7 +5149,7 @@ do
    :import-macros import-macros*
    :match match-where}
   ]===]
-  local module_name = "katdotnvim.aniseed.fennel.macros"
+  local module_name = "aniseed.fennel.macros"
   local _
   local function _620_()
     return mod

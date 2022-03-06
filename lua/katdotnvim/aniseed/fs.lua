@@ -1,5 +1,5 @@
 local _2afile_2a = "fnl/aniseed/fs.fnl"
-local _2amodule_name_2a = "katdotnvim.aniseed.fs"
+local _2amodule_name_2a = "aniseed.fs"
 local _2amodule_2a
 do
   package.loaded[_2amodule_name_2a] = {}
@@ -10,8 +10,8 @@ do
   _2amodule_2a["aniseed/locals"] = {}
   _2amodule_locals_2a = (_2amodule_2a)["aniseed/locals"]
 end
-local autoload = (require("katdotnvim.aniseed.autoload")).autoload
-local a, nvim = autoload("katdotnvim.aniseed.core"), autoload("katdotnvim.aniseed.nvim")
+local autoload = (require("aniseed.autoload")).autoload
+local a, nvim = autoload("aniseed.core"), autoload("aniseed.nvim")
 do end (_2amodule_locals_2a)["a"] = a
 _2amodule_locals_2a["nvim"] = nvim
 local function basename(path)
@@ -55,3 +55,4 @@ do
   end
 end
 _2amodule_2a["path-sep"] = path_sep
+return _2amodule_2a

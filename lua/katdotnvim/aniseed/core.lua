@@ -1,5 +1,5 @@
 local _2afile_2a = "fnl/aniseed/core.fnl"
-local _2amodule_name_2a = "katdotnvim.aniseed.core"
+local _2amodule_name_2a = "aniseed.core"
 local _2amodule_2a
 do
   package.loaded[_2amodule_name_2a] = {}
@@ -10,8 +10,8 @@ do
   _2amodule_2a["aniseed/locals"] = {}
   _2amodule_locals_2a = (_2amodule_2a)["aniseed/locals"]
 end
-local autoload = (require("katdotnvim.aniseed.autoload")).autoload
-local view = autoload("katdotnvim.aniseed.view")
+local autoload = (require("aniseed.autoload")).autoload
+local view = autoload("aniseed.view")
 do end (_2amodule_locals_2a)["view"] = view
 math.randomseed(os.time())
 local function rand(n)
@@ -450,3 +450,4 @@ local function constantly(v)
   return _59_
 end
 _2amodule_2a["constantly"] = constantly
+return _2amodule_2a
