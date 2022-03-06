@@ -77,7 +77,7 @@ local function defineFore()
   end
   if (vim.o.background == "light") then
     if (main.katContrast == "soft") then
-      fore = {ucolors.brighten(lightForeBack, 0.1), lightForeBack, ucolors.brighten(lightForeBack, 0.3), ucolors.brighten(lightForeBack, 0.5), ucolors.brighten(lightForeBack, 0.7), ucolors.brighten(lightForeBack, 0.9)}
+      fore = {ucolors.brighten(lightForeBack, -0.1), lightForeBack, ucolors.brighten(lightForeBack, 0.3), ucolors.brighten(lightForeBack, 0.5), ucolors.brighten(lightForeBack, 0.7), ucolors.brighten(lightForeBack, 0.9)}
     else
     end
     if (main.katContrast == "hard") then

@@ -88,22 +88,19 @@
 
   (when (= vim.o.background :light)
     (do (when (= main.katContrast :soft)
-          (set fore {1 (ucolors.brighten lightForeBack 0.1)
+          (set fore {1 (ucolors.brighten lightForeBack -0.1)
                      2 lightForeBack
                      3 (ucolors.brighten lightForeBack 0.3)
                      4 (ucolors.brighten lightForeBack 0.5)
                      5 (ucolors.brighten lightForeBack 0.7)
                      6 (ucolors.brighten lightForeBack 0.9)}))
       (when (= main.katContrast :hard)
-        (set fore
-             {1 lightForeBack
-              2 (ucolors.brighten lightForeBack 0.1)
-              3 (ucolors.brighten lightForeBack 0.3)
-              4 (ucolors.brighten lightForeBack 0.5)
-              5 (ucolors.brighten lightForeBack 0.7)
-              6 (ucolors.brighten lightForeBack 0.9)}))))
-
-
+        (set fore {1 lightForeBack
+                   2 (ucolors.brighten lightForeBack 0.1)
+                   3 (ucolors.brighten lightForeBack 0.3)
+                   4 (ucolors.brighten lightForeBack 0.5)
+                   5 (ucolors.brighten lightForeBack 0.7)
+                   6 (ucolors.brighten lightForeBack 0.9)}))))
   fore)
 
 (defn init [table]
