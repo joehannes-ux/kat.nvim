@@ -39,7 +39,7 @@ local function defineBack()
   local back = {}
   if (vim.o.background == "dark") then
     if (main.katContrast == "soft") then
-      back = {ucolors.brighten(lightForeBack, 0.1), lightForeBack, ucolors.brighten(lightForeBack, 0.3), ucolors.brighten(lightForeBack, 0.5), ucolors.brighten(lightForeBack, 0.7), ucolors.brighten(lightForeBack, 0.9)}
+      back = {ucolors.saturation(ucolors.darken(lightForeBack, 0.1), -0.5), lightForeBack, ucolors.brighten(lightForeBack, 0.1), ucolors.brighten(lightForeBack, 0.3), ucolors.brighten(lightForeBack, 0.5), ucolors.brighten(lightForeBack, 0.7)}
     else
     end
     if (main.katContrast == "hard") then
@@ -50,7 +50,7 @@ local function defineBack()
   end
   if (vim.o.background == "light") then
     if (main.katContrast == "soft") then
-      back = {ucolors.saturation(ucolors.darken(darkForeBack, 0.1), -0.5), darkForeBack, ucolors.saturation(ucolors.darken(darkForeBack, 0.3), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.5), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.7), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.9), -0.5)}
+      back = {ucolors.brighten(darkForeBack, 0.1), darkForeBack, ucolors.saturation(ucolors.darken(darkForeBack, 0.3), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.5), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.7), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.9), -0.5)}
     else
     end
     if (main.katContrast == "hard") then
@@ -66,7 +66,7 @@ local function defineFore()
   local fore = {}
   if (vim.o.background == "dark") then
     if (main.katContrast == "soft") then
-      fore = {ucolors.saturation(ucolors.lighten(darkForeBack, 0.1), -0.5), darkForeBack, ucolors.saturation(ucolors.darken(darkForeBack, 0.3), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.5), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.7), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.9), -0.5)}
+      fore = {ucolors.brighten(darkForeBack, 0.1), darkForeBack, ucolors.saturation(ucolors.darken(darkForeBack, 0.3), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.5), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.7), -0.5), ucolors.saturation(ucolors.darken(darkForeBack, 0.9), -0.5)}
     else
     end
     if (main.katContrast == "hard") then
@@ -77,7 +77,7 @@ local function defineFore()
   end
   if (vim.o.background == "light") then
     if (main.katContrast == "soft") then
-      fore = {ucolors.darken(lightForeBack, 0.1), ucolors.brighten(lightForeBack, 0.1), ucolors.brighten(lightForeBack, 0.3), ucolors.brighten(lightForeBack, 0.5), ucolors.brighten(lightForeBack, 0.7), ucolors.brighten(lightForeBack, 0.9)}
+      fore = {ucolors.saturation(ucolors.darken(lightForeBack, 0.1), -0.5), ucolors.brighten(lightForeBack, 0.1), ucolors.brighten(lightForeBack, 0.3), ucolors.brighten(lightForeBack, 0.5), ucolors.brighten(lightForeBack, 0.7), ucolors.brighten(lightForeBack, 0.9)}
     else
     end
     if (main.katContrast == "hard") then

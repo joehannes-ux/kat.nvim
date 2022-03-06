@@ -35,12 +35,12 @@
   ; back and foreground colors
   (when (= vim.o.background :dark)
     (do (when (= main.katContrast :soft)
-          (set back {1 (ucolors.brighten lightForeBack 0.1)
+          (set back {1 (ucolors.saturation (ucolors.darken lightForeBack 0.1) -0.5)
                      2 lightForeBack
-                     3 (ucolors.brighten lightForeBack 0.3)
-                     4 (ucolors.brighten lightForeBack 0.5)
-                     5 (ucolors.brighten lightForeBack 0.7)
-                     6 (ucolors.brighten lightForeBack 0.9)}))
+                     3 (ucolors.brighten lightForeBack 0.1)
+                     4 (ucolors.brighten lightForeBack 0.3)
+                     5 (ucolors.brighten lightForeBack 0.5)
+                     6 (ucolors.brighten lightForeBack 0.7)}))
       (when (= main.katContrast :hard)
         (set back {1 lightForeBack
                    2 (ucolors.brighten lightForeBack 0.1)
@@ -52,7 +52,7 @@
   ; else if color is light
   (when (= vim.o.background :light)
     (do (when (= main.katContrast :soft)
-          (set back {1 (ucolors.saturation (ucolors.darken darkForeBack 0.1) -0.5)
+          (set back {1 (ucolors.brighten darkForeBack 0.1)
                      2 darkForeBack
                      3 (ucolors.saturation (ucolors.darken darkForeBack 0.3) -0.5)
                      4 (ucolors.saturation (ucolors.darken darkForeBack 0.5) -0.5)
@@ -72,7 +72,7 @@
   (var fore {})
   (when (= vim.o.background :dark)
     (do (when (= main.katContrast :soft)
-          (set fore {1 (ucolors.saturation (ucolors.lighten darkForeBack 0.1) -0.5)
+          (set fore {1 (ucolors.brighten darkForeBack 0.1)
                      2 darkForeBack
                      3 (ucolors.saturation (ucolors.darken darkForeBack 0.1) -0.5)
                      3 (ucolors.saturation (ucolors.darken darkForeBack 0.3) -0.5)
@@ -90,7 +90,7 @@
 
   (when (= vim.o.background :light)
     (do (when (= main.katContrast :soft)
-          (set fore {1 (ucolors.darken lightForeBack 0.1)
+          (set fore {1 (ucolors.saturation (ucolors.darken lightForeBack 0.1) -0.5)
                      2 (ucolors.brighten lightForeBack 0.1)
                      3 (ucolors.brighten lightForeBack 0.3)
                      4 (ucolors.brighten lightForeBack 0.5)
